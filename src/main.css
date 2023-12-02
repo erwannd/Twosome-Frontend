@@ -22,6 +22,7 @@
 
 .game {
   flex: 1;
+  margin-left: 20px;
 }
 
 .user {
@@ -34,13 +35,27 @@
 .menu button {
   max-height: 70px;
   flex: 0.5;
-  margin: 5px;
+  margin-left: 0;
+  margin-right: 5px;
   margin-bottom: 20px;
-  border-radius: 15px;
+  border-radius: 0px;
+  border-left: none;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  transition: width 0.6s;
+  cursor: pointer;
 }
 
 .menu :first-child {
   margin-top: 25px;
+}
+
+.menu button:hover {
+  width: 110%;
+}
+
+.menu button.active {
+  width: 120%;
 }
 
 .game-screen {
@@ -64,7 +79,7 @@
   width: 100px;
   height: 100px;
   display: block;
-  margin: 0 auto;
+  margin-top: 10px;
   border: 3px dashed darkblue;
 }
 
