@@ -7,7 +7,7 @@
 }
 
 .guess-input {
-  top: 50%;
+  top: 67%;
   appearance: none;
   border: none;
   outline: none;
@@ -19,9 +19,9 @@
 }
 
 .previous-guesses {
-  top: 40%;
+  top: 55%;
 }
 
 .error-modal {
-  bottom: 20%;
+  bottom: 10%;
 }

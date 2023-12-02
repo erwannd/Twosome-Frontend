@@ -66,8 +66,8 @@
   background-color: cornflowerblue;
   border-radius: 4px;
   color: #180404; /* Set text color to white */
-  text-align: center;
-  align-items: center;
+  /* text-align: center; */
+  /* align-items: center; */
   position: relative;
   overflow: hidden;
 }

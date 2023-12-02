@@ -148,8 +148,28 @@
   --color4: PaleTurquoise;
   --color5: SkyBlue;
   --color6: lavender;
-  --finalSize: 35vmin;
+  --finalSize: 40vmin;
   left: 70%;
   top: 60%;
   animation-delay: -0.4s;
+}
+
+.firework:nth-child(4) {
+  --x: -20vmin;
+  --y: -40vmin;
+}
+
+.firework:nth-child(4),
+.firework:nth-child(4)::before,
+.firework:nth-child(4)::after {
+  --color1: #b307b3;
+  --color2: #9370db;
+  --color3: #e6e6fa;
+  --color4: #9b0fd7;
+  --color5: #8a2be2;
+  --color6: #ee82ee;
+  --finalSize: 35vmin;
+  left: 80%;
+  top: 80%;
+  animation-delay: -0.1s;
 }

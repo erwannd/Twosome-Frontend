@@ -3,6 +3,7 @@ import startBtn from "./images/start-btn.png";
 import phraseList from "./files/phrases.json";
 import GetPlayerGuess from "./GetPlayerGuess";
 import "./styles/game.css";
+import Heart from "./Heart";
 import Fireworks from "./Fireworks";
 
 // Sets a hidden letter into this character
@@ -102,9 +103,9 @@ export default function Game() {
       {gameStart && (
         <>
           <p className="hidden-phrase">{displayedPhrase}</p>
-          {/* <div className="hearts-container">
+          <div className="hearts-container">
             <Heart remainingLife={health} />
-          </div> */}
+          </div>
           <p className="score">Score: {score}</p>
 
           {/* Game is not complete, keep playing */}
