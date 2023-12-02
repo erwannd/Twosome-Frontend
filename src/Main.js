@@ -15,10 +15,20 @@ function Main() {
         <div className="game-screen"></div>
       </div>
       <div className="user">
-        <div className="user-container">
-          <div className="plus-icon">+</div>
-          <img className="user-profile-picture" src={heart} alt="pic"></img>
+        <div className="profile-container">
+          <div className="outer">
+            <img
+              src={heart}
+              alt="Profile"
+              className="profile-image"
+              draggable={false}
+            />
+            <div className="inner">
+              <input className="inputfile" type="file"></input>
+            </div>
+          </div>
         </div>
+        <p className="username">My Name Jeff</p>
       </div>
     </div>
   );
