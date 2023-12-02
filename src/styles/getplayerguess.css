@@ -1,0 +1,15 @@
+.guess-input {
+  appearance: none;
+  border: none;
+  outline: none;
+  border-bottom: 0.2em solid #e91e63;
+  background: rgba(233, 30, 99, 0.2);
+  border-radius: 0.2em 0.2em 0 0;
+  padding: 0.4em;
+  color: #e91e63;
+}
+
+.guess-area {
+  margin-top: 10px;
+  border: 3px solid black;
+}

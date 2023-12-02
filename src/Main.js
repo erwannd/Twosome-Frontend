@@ -1,29 +1,38 @@
 import React, { useState } from "react";
 import "./main.css";
+import Game from "./Game";
 import heart from "./heart_empty-removebg-preview.png";
 
 function Main() {
-  const [mode, setMode] = useState("mode1");
+  const [mode, setMode] = useState("game");
 
   // Toggle between different modes at the click of a button
   const handleMenuButtonClick = (selectedMode) => {
     setMode(selectedMode);
   };
 
+  //Define the available modes
+  const modeComponents = {
+    game: <Game />,
+    records: <div>Records</div>,
+    mode3: <div>Mode3</div>,
+    mode4: <div>Mode4</div>,
+  };
+
   return (
     <div className="main-app">
       <div className="menu">
         <button
-          className={mode === "mode1" ? "active" : ""}
-          onClick={() => handleMenuButtonClick("mode1")}
+          className={mode === "game" ? "active" : ""}
+          onClick={() => handleMenuButtonClick("game")}
         >
-          Button1
+          Game
         </button>
         <button
-          className={mode === "mode2" ? "active" : ""}
-          onClick={() => handleMenuButtonClick("mode2")}
+          className={mode === "records" ? "active" : ""}
+          onClick={() => handleMenuButtonClick("records")}
         >
-          Button2
+          Records
         </button>
         <button
           className={mode === "mode3" ? "active" : ""}
@@ -38,8 +47,8 @@ function Main() {
           Button4
         </button>
       </div>
-      <div className="game">
-        <div className="game-screen"></div>
+      <div className="middle">
+        <div className="mid-screen">{modeComponents[mode]}</div>
       </div>
       <div className="user">
         <div className="profile-container">
