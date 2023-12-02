@@ -1,4 +1,13 @@
+.guess-input,
+.previous-guesses,
+.error-modal {
+  position: absolute; /* Absolute to control vertical position */
+  left: 50%;
+  transform: translateX(-50%); /* left 50% and translate to center */
+}
+
 .guess-input {
+  top: 50%;
   appearance: none;
   border: none;
   outline: none;
@@ -9,7 +18,10 @@
   color: #e91e63;
 }
 
-.guess-area {
-  margin-top: 10px;
-  border: 3px solid black;
+.previous-guesses {
+  top: 40%;
+}
+
+.error-modal {
+  bottom: 20%;
 }

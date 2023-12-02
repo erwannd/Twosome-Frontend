@@ -41,7 +41,7 @@ export default function GetPlayerGuess({
   };
 
   return (
-    <div className="guess-area">
+    <>
       <form onSubmit={handleInputSubmission} className="guess-form">
         <input
           type="text"
@@ -58,20 +58,9 @@ export default function GetPlayerGuess({
         </p>
       )}
       <div className="error-modal">
-        {isError && (
-          <div>
-            <GuessErrorModal errorMessage={errorMessage} />
-            <GuessErrorModal errorMessage={errorMessage} />
-            <GuessErrorModal errorMessage={errorMessage} />
-            <GuessErrorModal errorMessage={errorMessage} />
-            <GuessErrorModal errorMessage={errorMessage} />
-            <GuessErrorModal errorMessage={errorMessage} />
-            <GuessErrorModal errorMessage={errorMessage} />
-          </div>
-        )}
+        {isError && <GuessErrorModal errorMessage={errorMessage} />}
       </div>
-      <button>Okay</button>
-    </div>
+    </>
   );
 }
 

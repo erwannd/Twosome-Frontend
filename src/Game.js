@@ -3,6 +3,7 @@ import startBtn from "./images/start-btn.png";
 import phraseList from "./files/phrases.json";
 import GetPlayerGuess from "./GetPlayerGuess";
 import "./styles/game.css";
+import Fireworks from "./Fireworks";
 
 // Sets a hidden letter into this character
 const HIDDEN = "_";
@@ -87,53 +88,47 @@ export default function Game() {
   };
 
   return (
-    <div className="game-screen">
+    <>
       {!gameStart && (
         <div className="game-opening">
           <h1>{/* <Title text="Wheel of Fortune" /> */}</h1>
-
-          <div className="menu-options">
-            <button onClick={handleStart} className="start-btn">
-              <span>START</span>
-            </button>
-          </div>
+          <button onClick={handleStart} className="start-btn">
+            <span>START</span>
+          </button>
         </div>
       )}
 
-      <div className="game-div">
-        {/* On game start display player info and health */}
-        {gameStart && (
-          <div>
-            <p className="hidden-phrase">{displayedPhrase}</p>
-            <div className="hearts-container">
-              {/* <Heart remainingLife={health} /> */}
-            </div>
-            <div className="score">Score: {score}</div>
+      {/* On game start display player info and health */}
+      {gameStart && (
+        <>
+          <p className="hidden-phrase">{displayedPhrase}</p>
+          {/* <div className="hearts-container">
+            <Heart remainingLife={health} />
+          </div> */}
+          <p className="score">Score: {score}</p>
 
-            {/* Game is not complete, keep playing */}
-            {!gameComplete && randomPhrase && (
-              <div className="guess-area">
-                <GetPlayerGuess
-                  onGuess={handleGuess}
-                  previousGuesses={previousGuesses}
-                  clearFeedback={() => setFeedback("")}
-                />
-                <p className="answer-feedback">{feedback}</p>
-              </div>
-            )}
-          </div>
-        )}
+          {/* Game is not complete, keep playing */}
+          {!gameComplete && randomPhrase && (
+            <>
+              <GetPlayerGuess
+                onGuess={handleGuess}
+                previousGuesses={previousGuesses}
+                clearFeedback={() => setFeedback("")}
+              />
+              <p className="answer-feedback">{feedback}</p>
+            </>
+          )}
+        </>
+      )}
 
-        {/* Checks for game completion */}
-        {gameComplete && (
-          // The game is over, show result screen
-          <div className="game-result-div">
-            <p className="result-message">{message}</p>
-            {console.log(message)}
-          </div>
-        )}
-      </div>
-    </div>
+      {/* Checks for game completion */}
+      {gameComplete && (
+        <>
+          <p className="result-message">{message}</p>
+          {health > 0 && <Fireworks />}
+        </>
+      )}
+    </>
   );
 }
 
