@@ -14,14 +14,20 @@
   src: url("../fonts/zerovelo.ttf") format("truetype");
 }
 
-.game-opening {
-  top: 50%;
+.login-area {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  text-align: center;
 }
 
 .hidden-phrase {
   top: 5%;
   font-family: zerovelo;
-  font-size: 20px;
+  font-size: 25px;
   color: #5802d0;
   letter-spacing: 2px;
   width: 100%;
@@ -46,6 +52,10 @@
 }
 
 .start-btn {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
   align-items: center;
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;

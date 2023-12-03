@@ -1,0 +1,24 @@
+.record-submission {
+  position: absolute;
+  bottom: 10%;
+  margin-top: 30px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.confirm-btn {
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.submit-score-form {
+  margin-top: 20px;
+}
+
+.submit-score-form input {
+  margin-left: 10px;
+  width: 25%;
+}

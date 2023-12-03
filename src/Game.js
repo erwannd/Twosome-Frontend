@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import startBtn from "./images/start-btn.png";
 import phraseList from "./files/phrases.json";
 import GetPlayerGuess from "./GetPlayerGuess";
 import "./styles/game.css";
+import LoginForm from "./LoginForm";
+import ScoreSubmission from "./ScoreSubmission";
 import Heart from "./Heart";
 import Fireworks from "./Fireworks";
+import Title from "./TitleAnimation";
 
 // Sets a hidden letter into this character
 const HIDDEN = "_";
 // Maximum number of misses
 const STARTING_HEALTH = 5;
 
-export default function Game() {
+export default function Game({ user, username, onLogin, onLogout }) {
   const [gameStart, setGameStart] = useState(false);
   const [score, setScore] = useState(0);
   const [randomPhrase, setRandomPhrase] = useState("");
@@ -91,12 +93,35 @@ export default function Game() {
   return (
     <>
       {!gameStart && (
-        <div className="game-opening">
-          <h1>{/* <Title text="Wheel of Fortune" /> */}</h1>
-          <button onClick={handleStart} className="start-btn">
-            <span>START</span>
-          </button>
-        </div>
+        <>
+          <Title text="Wheel Of Fortune" />
+          <div className="login-area">
+            {user && username ? (
+              <p>Welcome back, {username}</p>
+            ) : (
+              user && !username && <p>Hello, newcomer</p>
+            )}
+
+            {!user && (
+              <>
+                <p>You are not logged in.</p>
+                <p>Please login to play</p>
+              </>
+            )}
+            <LoginForm
+              username={username}
+              loginEvent={onLogin}
+              logoutEvent={onLogout}
+            />
+          </div>
+
+          {/* <p>Hello, {username}</p> Testing login event listener*/}
+          {user && (
+            <button onClick={handleStart} className="start-btn">
+              <span>START</span>
+            </button>
+          )}
+        </>
       )}
 
       {/* On game start display player info and health */}
@@ -126,6 +151,12 @@ export default function Game() {
       {gameComplete && (
         <>
           <p className="result-message">{message}</p>
+          <ScoreSubmission
+            user={user}
+            username={username}
+            score={score}
+            onExit={handleExitSubmission}
+          />
           {health > 0 && <Fireworks />}
         </>
       )}

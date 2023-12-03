@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: row;
   user-select: none;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    url("./images/background_starry.png");
 }
 
 .menu,
@@ -63,7 +68,11 @@
   margin: 10px;
   height: 90%;
   border: 5px solid blueviolet;
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6)
+  );
   border-radius: 4px;
   color: #180404; /* Set text color to white */
   /* text-align: center; */
