@@ -3,6 +3,7 @@ import axios from "axios";
 import "./main.css";
 import Game from "./Game";
 import RecordViewer from "./RecordViewer";
+import ProfileUpdater from "./UpdateProfile";
 import heart from "./heart_empty-removebg-preview.png";
 
 function Main() {
@@ -33,7 +34,7 @@ function Main() {
         onLogout={handleLogout}
       />
     ),
-    mode3: <div>Mode3</div>,
+    updateProfile: <ProfileUpdater user={user} username={userName} />,
     mode4: <div>Mode4</div>,
   };
 
@@ -48,7 +49,6 @@ function Main() {
           `https://twosome-backend.wl.r.appspot.com/findUserNameById?googleId=${user.uid}`
         )
         .then((response) => {
-          console.log(response);
           // Check if the response is an empty array (player does not have a user record
           // associated with their account).
           if (response.data !== null && response.data.length > 0) {
@@ -85,8 +85,8 @@ function Main() {
           Records
         </button>
         <button
-          className={mode === "mode3" ? "active" : ""}
-          onClick={() => handleMenuButtonClick("mode3")}
+          className={mode === "updateProfile" ? "active" : ""}
+          onClick={() => handleMenuButtonClick("updateProfile")}
         >
           Button3
         </button>

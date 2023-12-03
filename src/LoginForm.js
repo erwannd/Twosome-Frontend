@@ -53,9 +53,8 @@ function LoginForm({ username, loginEvent, logoutEvent }) {
     auth.onAuthStateChanged((user) => {
       if (user) {
         console.log("User is signed in");
+        // console.log(user.uid);
         setLoggedUser(user);
-        console.log(user.uid);
-        console.log(username);
       } else {
         console.log("No user is signed in.");
       }
