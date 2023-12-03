@@ -39,8 +39,8 @@
 }
 
 .menu button {
-  max-height: 70px;
-  flex: 0.5;
+  max-height: 95px;
+  flex: 0.8;
   margin-left: 0;
   margin-right: 5px;
   margin-bottom: 20px;
@@ -50,6 +50,9 @@
   border-bottom-right-radius: 100px;
   transition: width 0.3s;
   cursor: pointer;
+  background: linear-gradient(to right, #800080, #9370db, #e6e6fa);
+  color: #ffffff;
+  transition: "background 0.3s ease, transform 0.2s ease";
 }
 
 .menu :first-child {
@@ -78,7 +81,7 @@
   /* text-align: center; */
   /* align-items: center; */
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* .user-profile-picture {

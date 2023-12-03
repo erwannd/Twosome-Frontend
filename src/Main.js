@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./main.css";
 import Game from "./Game";
+import RecordViewer from "./RecordViewer";
 import heart from "./heart_empty-removebg-preview.png";
 
 function Main() {
@@ -24,7 +25,14 @@ function Main() {
         onLogout={handleLogout}
       />
     ),
-    records: <div>Records</div>,
+    records: (
+      <RecordViewer
+        userId={user ? user.uid : null}
+        username={userName}
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+      />
+    ),
     mode3: <div>Mode3</div>,
     mode4: <div>Mode4</div>,
   };
