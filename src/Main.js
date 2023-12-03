@@ -4,7 +4,7 @@ import "./main.css";
 import Game from "./Game";
 import RecordViewer from "./RecordViewer";
 import ProfileUpdater from "./UpdateProfile";
-import heart from "./heart_empty-removebg-preview.png";
+import prof_pic from "./profile_pictures/dog.jpg";
 
 function Main() {
   const [mode, setMode] = useState("game");
@@ -104,7 +104,7 @@ function Main() {
         <div className="profile-container">
           <div className="outer">
             <img
-              src={heart}
+              src={prof_pic}
               alt="Profile"
               className="profile-image"
               draggable={false}

@@ -10,7 +10,8 @@
       rgba(255, 255, 255, 0.2),
       rgba(255, 255, 255, 0.2)
     ),
-    url("./images/background_starry.png");
+    url("./background_images/background_starry.png");
+  background-size: 100%;
 }
 
 .menu,
