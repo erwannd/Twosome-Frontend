@@ -29,10 +29,10 @@
   font-family: zerovelo;
   font-size: 25px;
   color: #5802d0;
+  font-style: bold;
   letter-spacing: 2px;
   width: 100%;
   text-align: center;
-  background-color: #af40ff;
 }
 
 .hearts-container {

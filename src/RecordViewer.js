@@ -33,7 +33,7 @@ export default function RecordViewer({ userId, username, onLogin, onLogout }) {
   function displayAllRecords() {
     axios
       .get(
-        `https://wheelofortune.wl.r.appspot.com/findAllRecordsByPage?page=${page}&size=${size}&sortField=${sortField}&sortDirection=${sortDirection}`
+        `https://twosome-backend.wl.r.appspot.com/findAllRecordsByPage?page=${page}&size=${size}&sortField=${sortField}&sortDirection=${sortDirection}`
       )
       .then((response) => {
         setGameRecords(response.data.content);
@@ -50,7 +50,7 @@ export default function RecordViewer({ userId, username, onLogin, onLogout }) {
   function displayUserSpecificRecords(usrId) {
     axios
       .get(
-        `https://wheelofortune.wl.r.appspot.com/findByIdByPage?userId=${usrId}&page=${page}&size=${size}&sortField=${sortField}&sortDirection=${sortDirection}`
+        `https://twosome-backend.wl.r.appspot.com/findRecordsByIdByPage?userId=${usrId}&page=${page}&size=${size}&sortField=${sortField}&sortDirection=${sortDirection}`
       )
       .then((response) => {
         setGameRecords(response.data.content);
@@ -66,7 +66,7 @@ export default function RecordViewer({ userId, username, onLogin, onLogout }) {
   const handleDelete = async (recordId) => {
     axios
       .delete(
-        `https://wheelofortune.wl.r.appspot.com/deleteByRecordId?recordId=${recordId}`
+        `https://twosome-backend.wl.r.appspot.com/deleteGameRecordById?recordId=${recordId}`
       )
       .then(() => {
         displayRecords();

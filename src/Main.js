@@ -38,15 +38,20 @@ function Main() {
   };
 
   // This will be called by LoginForm
+  // Sets the username to then display it on the UI
+  // or pass it as prop to children
   function handleLogin(user) {
     setUser(user);
     if (user !== null) {
       axios
         .get(
-          `https://wheelofortune.wl.r.appspot.com/findNameById?googleId=${user.uid}`
+          `https://twosome-backend.wl.r.appspot.com/findUserNameById?googleId=${user.uid}`
         )
         .then((response) => {
-          if (response.data !== null) {
+          console.log(response);
+          // Check if the response is an empty array (player does not have a user record
+          // associated with their account).
+          if (response.data !== null && response.data.length > 0) {
             setUserName((prev) => response.data[0].name);
             // Testing login event listener
             // console.log(response.data[0].name);

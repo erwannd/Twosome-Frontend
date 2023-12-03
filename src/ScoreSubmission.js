@@ -22,7 +22,7 @@ export default function ScoreSubmission({ user, username, score, onExit }) {
 
     try {
       const response = await axios.post(
-        "https://wheelofortune.wl.r.appspot.com/saveGame",
+        "https://twosome-backend.wl.r.appspot.com/saveGame",
         data
       );
       console.log("Response:", response.data);

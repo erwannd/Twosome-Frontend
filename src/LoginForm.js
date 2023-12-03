@@ -46,8 +46,6 @@ function LoginForm({ username, loginEvent, logoutEvent }) {
     logoutEvent();
   }
 
-  console.log(username);
-
   // We put the onAuthStateChanged in useEffect so this is only called when
   // this component mounts
   useEffect(() => {
@@ -56,6 +54,8 @@ function LoginForm({ username, loginEvent, logoutEvent }) {
       if (user) {
         console.log("User is signed in");
         setLoggedUser(user);
+        console.log(user.uid);
+        console.log(username);
       } else {
         console.log("No user is signed in.");
       }
