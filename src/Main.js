@@ -95,7 +95,7 @@ function Main() {
           className={mode === "updateProfile" ? "active" : ""}
           onClick={() => handleMenuButtonClick("updateProfile")}
         >
-          Button3
+          Profile
         </button>
         <button
           className={mode === "mode4" ? "active" : ""}
