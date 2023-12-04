@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import phraseList from "./files/phrases.json";
+import axios from "axios";
 import GetPlayerGuess from "./GetPlayerGuess";
 import "./styles/game.css";
 import LoginForm from "./LoginForm";
@@ -9,14 +9,19 @@ import Fireworks from "./Fireworks";
 import Title from "./TitleAnimation";
 
 // Sets a hidden letter into this character
-const HIDDEN = "_";
+const HIDDEN = "*";
 // Maximum number of misses
 const STARTING_HEALTH = 5;
 
 export default function Game({ user, username, onLogin, onLogout }) {
   const [gameStart, setGameStart] = useState(false);
   const [score, setScore] = useState(0);
+
+  // Const to store available phrase categories
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [randomPhrase, setRandomPhrase] = useState("");
+
   const [displayedPhrase, setDisplayedPhrase] = useState("");
   const [previousGuesses, setPreviousGuesses] = useState([]);
   const [gameInProgress, setGameInProgress] = useState(false);
@@ -25,6 +30,33 @@ export default function Game({ user, username, onLogin, onLogout }) {
   const [message, setMessage] = useState("");
   const [health, setHealth] = useState(STARTING_HEALTH);
 
+  // Get an array of all available categories when this component loads
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          "https://twosome-backend.wl.r.appspot.com/findAllPhrases"
+        );
+        const phrases = response.data;
+        const uniqueCategories = [
+          ...new Set(phrases.map((phrase) => phrase.category)),
+        ];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching phrases:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  // Function to handle category drop-down change
+  const handleCategoryChange = (event) => {
+    const selected = event.target.value;
+    setSelectedCategory(selected);
+  };
+
+  // Create a displayed phrase (of asterisks) from the random phrase
   useEffect(() => {
     if (gameInProgress) {
       setDisplayedPhrase(hideRandomPhrase(randomPhrase));
@@ -32,22 +64,33 @@ export default function Game({ user, username, onLogin, onLogout }) {
   }, [randomPhrase, gameInProgress]);
 
   // This is run when the player clicks the start button
-  const handleStart = () => {
+  const handleStart = async () => {
     setGameCompletion(false);
     setPreviousGuesses([]);
     setScore(0);
     setHealth(STARTING_HEALTH);
 
-    // Simulate asynchronous setup logic
-    Promise.resolve().then(() => {
-      // Finally, set gameStart to true
+    try {
+      console.log(`selected: ${selectedCategory}`);
+      const response = await axios.get(
+        `https://twosome-backend.wl.r.appspot.com/getRandomPhraseByCategory?category=${selectedCategory}`
+      );
+      const phrase = response.data;
+      setRandomPhrase(phrase.phrase);
       setGameStart(true);
       setGameInProgress(true);
-    });
-    const rdn = getRandomPhrase();
-    setRandomPhrase(rdn);
-    setMessage("");
-    setFeedback("");
+      setMessage("");
+      setFeedback("");
+    } catch (error) {
+      console.error("Error fetching random phrase:", error);
+    }
+
+    // // Simulate asynchronous setup logic
+    // Promise.resolve().then(() => {
+    //   // Finally, set gameStart to true
+    //   setGameStart(true);
+    //   setGameInProgress(true);
+    // });
   };
 
   const handleExitSubmission = () => {
@@ -115,17 +158,34 @@ export default function Game({ user, username, onLogin, onLogout }) {
             />
           </div>
 
-          {/* <p>Hello, {username}</p> Testing login event listener*/}
           {user && (
-            <button onClick={handleStart} className="start-btn">
-              <span>START</span>
-            </button>
+            <>
+              <div className="category-dropdown">
+                <label>Select a category to play</label>
+                <select
+                  onChange={handleCategoryChange}
+                  value={selectedCategory}
+                >
+                  <option value="" disabled>
+                    Select a category
+                  </option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button onClick={handleStart} className="start-btn">
+                <span>START</span>
+              </button>
+            </>
           )}
         </>
       )}
 
       {/* On game start display player info and health */}
-      {gameStart && (
+      {gameStart && selectedCategory && (
         <>
           <p className="hidden-phrase">{displayedPhrase}</p>
           <div className="hearts-container">
@@ -162,12 +222,6 @@ export default function Game({ user, username, onLogin, onLogout }) {
       )}
     </>
   );
-}
-
-function getRandomPhrase() {
-  const randomNumber = Math.random(); // Generate a random decimal between 0 and 1
-  const scaledNumber = Math.floor(randomNumber * phraseList.length);
-  return phraseList[scaledNumber];
 }
 
 function hideRandomPhrase(phrase) {
