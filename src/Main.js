@@ -34,7 +34,14 @@ function Main() {
         onLogout={handleLogout}
       />
     ),
-    updateProfile: <ProfileUpdater user={user} username={userName} />,
+    updateProfile: (
+      <ProfileUpdater
+        user={user}
+        username={userName}
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+      />
+    ),
     mode4: <div>Mode4</div>,
   };
 
