@@ -121,7 +121,7 @@ function Main() {
             </div>
           </div>
         </div>
-        <p className="username">My Name {userName}</p>
+        <p className="username">{userName}</p>
       </div>
     </div>
   );

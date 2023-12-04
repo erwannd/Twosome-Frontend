@@ -103,7 +103,7 @@ export default function RecordViewer({ userId, username, onLogin, onLogout }) {
             setQueryType("all");
             setActiveMode("all");
           }}
-          className={activeMode === "all" ? "active-mode" : ""}
+          className={activeMode === "all" ? "active-mode" : "inactive"}
         >
           All Records
         </button>
@@ -114,7 +114,9 @@ export default function RecordViewer({ userId, username, onLogin, onLogout }) {
             setQueryType("user-specific");
             setActiveMode("user-specific");
           }}
-          className={activeMode === "user-specific" ? "active-mode" : ""}
+          className={
+            activeMode === "user-specific" ? "active-mode" : "inactive"
+          }
         >
           Your Records
         </button>

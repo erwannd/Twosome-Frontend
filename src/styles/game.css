@@ -26,13 +26,25 @@
 
 .hidden-phrase {
   top: 5%;
-  font-family: zerovelo;
-  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
   color: #5802d0;
   font-style: bold;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   width: 100%;
   text-align: center;
+}
+
+.hidden-phrase span {
+  vertical-align: text-bottom;
+  font-size: smaller;
+  color: cornflowerblue;
+}
+
+.hidden-phrase p {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+  color: rgb(183, 3, 199);
 }
 
 .hearts-container {
@@ -45,7 +57,7 @@
 }
 
 .answer-feedback {
-  top: 60%;
+  top: 80%;
 }
 
 .result-message {
@@ -69,7 +81,7 @@
   left: 50%;
   transform: translateX(-50%);
   align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  background-image: linear-gradient(144deg, #800080, #af40ff 50%, #9370db);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;

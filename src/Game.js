@@ -21,6 +21,8 @@ export default function Game({ user, username, onLogin, onLogout }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [randomPhrase, setRandomPhrase] = useState("");
+  const [hint, setHint] = useState(null);
+  const [hintVisible, setHintVisible] = useState(false);
 
   const [displayedPhrase, setDisplayedPhrase] = useState("");
   const [previousGuesses, setPreviousGuesses] = useState([]);
@@ -77,6 +79,7 @@ export default function Game({ user, username, onLogin, onLogout }) {
       );
       const phrase = response.data;
       setRandomPhrase(phrase.phrase);
+      setHint(phrase.hint);
       setGameStart(true);
       setGameInProgress(true);
       setMessage("");
@@ -104,7 +107,7 @@ export default function Game({ user, username, onLogin, onLogout }) {
   const handleGuess = (guess) => {
     if (randomPhrase.toLowerCase().includes(guess.toLowerCase())) {
       // Player guess is correct
-      setScore(score + 1);
+      setScore(score + 5);
       const updatedPhrase = updateDisplayedPhrase(
         randomPhrase,
         displayedPhrase,
@@ -115,7 +118,7 @@ export default function Game({ user, username, onLogin, onLogout }) {
       if (!updatedPhrase.includes(HIDDEN)) {
         setGameCompletion(true);
         setMessage(`You guessed the secret phrase!`);
-        setScore(score + health * 5);
+        setScore(score + health * 20);
       }
       setDisplayedPhrase(updatedPhrase);
     } else {
@@ -187,7 +190,18 @@ export default function Game({ user, username, onLogin, onLogout }) {
       {/* On game start display player info and health */}
       {gameStart && selectedCategory && (
         <>
-          <p className="hidden-phrase">{displayedPhrase}</p>
+          <p className="hidden-phrase">
+            {displayedPhrase}{" "}
+            {!gameComplete && hint && (
+              <span
+                onMouseOver={() => setHintVisible(true)}
+                onMouseOut={() => setHintVisible(false)}
+              >
+                ℹ️
+              </span>
+            )}
+            {hint && hintVisible && <p>Hint: {hint}</p>}
+          </p>
           <div className="hearts-container">
             <Heart remainingLife={health} />
           </div>
