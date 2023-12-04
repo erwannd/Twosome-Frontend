@@ -1,3 +1,11 @@
+.login-reminder {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
 .profile-update-form {
   position: absolute;
   top: 5%;
