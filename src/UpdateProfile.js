@@ -45,12 +45,14 @@ export default function ProfileUpdater({ user, username, onLogin, onLogout }) {
         </form>
       ) : (
         <>
-          <p>Login to update your profile</p>
-          <LoginForm
-            username={username}
-            loginEvent={onLogin}
-            logoutEvent={onLogout}
-          />
+          <div className="login-reminder">
+            <p>Login to update your profile</p>
+            <LoginForm
+              username={username}
+              loginEvent={onLogin}
+              logoutEvent={onLogout}
+            />
+          </div>
         </>
       )}
     </>

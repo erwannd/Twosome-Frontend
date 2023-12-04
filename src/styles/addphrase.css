@@ -1,0 +1,21 @@
+.user-phrase-submission {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.user-phrase-submission input {
+  margin-bottom: 10px;
+}
+
+.success-alert {
+  position: absolute;
+  background-color: blueviolet;
+  border-radius: 4px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}

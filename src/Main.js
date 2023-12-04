@@ -5,6 +5,7 @@ import Game from "./Game";
 import RecordViewer from "./RecordViewer";
 import ProfileUpdater from "./UpdateProfile";
 import prof_pic from "./profile_pictures/dog.jpg";
+import AddYourPhrase from "./AddYourPhrase";
 
 function Main() {
   const [mode, setMode] = useState("game");
@@ -42,7 +43,14 @@ function Main() {
         onLogout={handleLogout}
       />
     ),
-    mode4: <div>Mode4</div>,
+    addPhrase: (
+      <AddYourPhrase
+        user={user}
+        username={userName}
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+      />
+    ),
   };
 
   // This will be called by LoginForm
@@ -89,19 +97,19 @@ function Main() {
           className={mode === "records" ? "active" : ""}
           onClick={() => handleMenuButtonClick("records")}
         >
-          Records
+          View Highscores
         </button>
         <button
           className={mode === "updateProfile" ? "active" : ""}
           onClick={() => handleMenuButtonClick("updateProfile")}
         >
-          Profile
+          Update Profile
         </button>
         <button
-          className={mode === "mode4" ? "active" : ""}
-          onClick={() => handleMenuButtonClick("mode4")}
+          className={mode === "addPhrase" ? "active" : ""}
+          onClick={() => handleMenuButtonClick("addPhrase")}
         >
-          Button4
+          Submit your own phrase
         </button>
       </div>
       <div className="middle">
